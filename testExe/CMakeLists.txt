@@ -14,5 +14,6 @@ conan_cmake_run(
 )
 endif()
 
-add_executable(test test.cpp)
-target_link_libraries(test PRIVATE CONAN_PKG::outputWrapper)
+add_executable(testExe testExe.cpp)
+target_link_libraries(testExe PRIVATE CONAN_PKG::outputWrapper)
+

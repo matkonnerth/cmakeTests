@@ -14,6 +14,6 @@ conan_cmake_run(
 )
 endif()
 
-add_library(outputWrapperUser outputWrapperUser.cpp)
-target_link_libraries(outputWrapperUser PRIVATE CONAN_PKG::outputWrapper)
+add_library(testLib testLib.cpp)
+target_link_libraries(testLib PRIVATE CONAN_PKG::outputWrapper)
 
