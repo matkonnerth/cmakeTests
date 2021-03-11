@@ -1,3 +1,4 @@
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 if(CONAN_EXPORTED)
 # Conan is being used to build this package. Do not run it again!
