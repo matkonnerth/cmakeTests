@@ -6,7 +6,7 @@ class OutputWrapperConan(ConanFile):
     generators = "cmake"  
     settings = "os", "compiler", "arch", "build_type"
     license = "mk"   
-    exports_sources = "src/*", "include/*", "CMakeLists.txt"
+    exports_sources = "src/*", "include/*", "tests/*", "CMakeLists.txt"
     description = "outputWrapper lib"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True,
@@ -19,6 +19,7 @@ class OutputWrapperConan(ConanFile):
         cmake = CMake(self) 
         cmake.configure() 
         cmake.build()
+        cmake.test()
 
     def package(self):
         self.copy("*.h", dst="include", src="include")

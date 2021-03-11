@@ -18,3 +18,6 @@ endif()
 add_library(outputWrapper SHARED src/outputWrapper.cpp)
 target_include_directories(outputWrapper PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 target_link_libraries(outputWrapper PRIVATE CONAN_PKG::output)
+
+enable_testing()
+add_subdirectory(tests)
