@@ -19,6 +19,12 @@ endif()
 add_library(outputWrapper SHARED src/outputWrapper.cpp)
 target_include_directories(outputWrapper PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 target_link_libraries(outputWrapper PRIVATE CONAN_PKG::output)
+# The LD linker complains even about missing link of transitive dependencies,
+# altough they are private and hidden (wrapper library)
+# LD needs to see them. This would require for consumer to have find_package
+# in cmake for transitive and private dependencies.
+# which is not what we want. We can fix this with this workaround
+target_link_options(outputWrapper PUBLIC "-Wl,--unresolved-symbols=ignore-in-shared-libs")
 
 enable_testing()
 add_subdirectory(tests)

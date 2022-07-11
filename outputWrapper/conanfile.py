@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class OutputWrapperConan(ConanFile): 
     name = "outputWrapper"
-    requires = [("output/master@mk/testing", "private")]   
+     
     generators = "cmake"  
     settings = "os", "compiler", "arch", "build_type"
     license = "mk"   
@@ -11,6 +11,9 @@ class OutputWrapperConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True,
                        "fPIC": True}
+
+    def requirements(self):
+        self.requires("output/master@mk/testing", private=True) 
 
     def imports(self):
         self.copy("*.so*", dst="lib", src="lib")
